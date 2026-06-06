@@ -3,9 +3,9 @@ from .models import BlogPost, Category
 
 
 class BlogPostAdmin(admin.ModelAdmin):
-    list_display = ('title', 'author', 'category', 'status')
-    list_filter = ('status', 'category', )
-    search_fields = ('title', 'content')
+    list_display = ('title', 'author', 'category', 'status', 'is_featured',)
+    list_filter = ('status', 'category', 'is_featured')
+    search_fields = ('title',)
     prepopulated_fields = {'slug': ('title',)}
     ordering = ('-created_at',)
 
