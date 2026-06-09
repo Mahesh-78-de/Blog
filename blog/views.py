@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from blog.models import BlogPost,Category
 
 
@@ -20,5 +20,13 @@ def category_posts(request, category_id):
         
     }
     return render(request, 'category_posts.html', context)
+
+def blog_post(request, slug):
+    single_blog = get_object_or_404(BlogPost, slug=slug, status='Published')
+
+    context = {
+        'single_blog': single_blog,
+    }
+    return render(request, 'blog.html', context)
 
 

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- for the content when user searches -->
+<h3 class="text-uppercase text-warning " style="letter-spacing: 2px;">Search Results - "{{ request.GET.Keyword }}"</h3>
+    
+
+  <div class="row mb-2">
+    {% if blogs %}
+     {% for i in blogs %}
+   
+    <div class="col-md-6">
+      <div class="card border-0" >
+        <div class="card-body">
+          <h3> <a href="{% url 'category_posts' i.category.id %}" class='text-dark'>{{ i.title }}</a></h3>
+          <small class="mb-1 text-muted">{{ i.created_at|timesince }} ago |  {{ i.author }}</small>
+          <p class="card-text">{{ i.short_description | truncatewords:20 }}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% if not blogs %}
+      <p>No results found for "{{ request.GET.Keyword }}".</p>
+    {% endif %}
+  </div>
+{% endblock %}
