@@ -1,8 +1,12 @@
 
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.db.models import Q
 from blog.models import BlogPost, Category
+from blog_main.forms import RegistrationForm
 from pages.models import About
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import authenticate
+from django.contrib import auth
 
 def home(request):
     categories = Category.objects.all()
@@ -35,3 +39,48 @@ def search(request):
         'blogs': blogs,
     }
     return render(request, 'search.html', context)
+
+# logic to register a new user to the website.
+
+def register(request):
+
+    form= RegistrationForm()
+    context = {
+        'form': form,
+    }
+
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            context['success'] = "Registration successful! You can now log in."
+        else:
+            context['error'] = "Please correct the errors below."
+
+    return render(request, 'register.html', context)
+
+
+# logic to log in an existing user to the website.
+def login(request):
+    form =AuthenticationForm(request)
+
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                auth.login(request, user)
+            return redirect('home')
+            
+    context = {
+        'form': form,
+    }
+    return render(request, 'login.html', context)
+
+# logic to log out a logged in user from the website.
+def logout(request):
+    auth.logout(request)
+    return redirect('home')
