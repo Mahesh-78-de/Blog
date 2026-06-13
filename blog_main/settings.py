@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'pages',
     'crispy_forms',
     'crispy_bootstrap4',
+    'dashboard',
 
   
 ]
@@ -135,3 +136,6 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_URL = 'login'
+

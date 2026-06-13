@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+   <div class="row">
+    <!-- left sidebar -->
+          <div class="col-md-3">
+        <div class="nav flex-column nav-pills bg-light" aria-orientation="vertical">
+            <a class="nav-link text-dark {% if request.resolver_match.url_name == 'dashboard' %} active bg-warning{% endif %}" href="{% url 'dashboard' %}">Dashboard</a>
+            <a class="nav-link text-dark {% if request.resolver_match.url_name == 'categories' %} active bg-warning{% endif %}" href="{% url 'categories' %}">Categories</a>
+             <a class="nav-link text-dark" href="#">Posts</a>
+            <a class="nav-link text-dark" href="#">Logout</a>
+        </div>
+     </div>
+
+
+     <!-- right sidebar -->
+      <div class="col-md-9">
+        <div class="row">
+         <span> Logged in as <b> {{ user }}</b></span>
+            <div class="col">
+                <div class="card border-default mb-3">
+                   <div class="card-header text-uppercase font-weight-bold">Categories</div>
+                   <div class="card-body">
+                      <h5 class="card-title text-center">{{ category_count }}</h5>
+                   </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card border-default mb-3">
+                   <div class="card-header text-uppercase font-weight-bold">All Posts</div>
+                   <div class="card-body">
+                      <h5 class="card-title text-center">{{ blogs_count }}</h5>
+                   </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      
+
+   </div>
+{% endblock %}  

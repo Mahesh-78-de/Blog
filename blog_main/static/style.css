@@ -58,30 +58,12 @@ h1, h2, h3, h4, h5, h6 {
  * Footer
  */
 .blog-footer {
-  padding: 4rem 0;
+  padding: 2.5rem 0;
   color: #727272;
   text-align: center;
   background-color: #f9f9f9;
   border-top: .05rem solid #e5e5e5;
-  margin-top: 4rem;
-  font-size: 1.1rem;
 }
 .blog-footer p:last-child {
   margin-bottom: 0;
 }
-
-/* Search */
-.search-form {
-  max-width: 340px;
-  margin: 0 auto;
-}
-.search-input {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-.search-button {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-
