@@ -112,4 +112,10 @@ def edit_posts(request, pk):
     
     return render(request, 'dashboard/edit_posts.html',context)
 
+# for post deletion
+def delete_posts(request,pk):
+    post =get_object_or_404(BlogPost ,pk=pk)
+    post.delete()
+    return redirect('posts')
+
 
