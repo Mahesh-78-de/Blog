@@ -6,8 +6,8 @@
  {% include 'dashboard/sidebar.html' %}
 
  <div class="colmd-9">
-    <h3> Edit Category </h3>
-    <form action="{% url 'edit_category' category.id %}" method="post" style="width: 500px;" >
+    <h3> Edit Posts </h3>
+    <form action="{% url 'edit_posts' post.id %}" method="post" style="width: 700px;" >
     {% csrf_token %}
 
     {{form | crispy }}
