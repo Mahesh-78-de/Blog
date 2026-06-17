@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render ,get_object_or_404
 from django.contrib.auth.decorators import login_required
 from blog.models import Category ,BlogPost
-from dashboard.form import CategoryForm, PostForm ,UserForm
+from dashboard.form import CategoryForm, EditForm, PostForm ,UserForm
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 
@@ -150,7 +150,7 @@ def edit_users(request,pk):
         if form.is_valid(request.POST,instance=user):
             form.save()
             return redirect('users')
-    form =UserForm(instance =user)
+    form =EditForm(instance =user)
 
     context ={
         'form':form,

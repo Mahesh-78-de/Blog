@@ -6,6 +6,7 @@
  {% include 'dashboard/sidebar.html' %}
 
  <div class="colmd-9">
+   {% if perms.auth.view_users %}
     <h3> Edit Users </h3>
     <form action="{% url 'edit_users' user.id %}" method="post" style="width: 700px;" >
     {% csrf_token %}
@@ -15,6 +16,9 @@
     <button type="submit" class="btn btn-warning"> Submit</button>
         
     </form>
+   {% else %}
+   <h3> You have not that access .</h3>
+   {% endif %}
   
 
 
