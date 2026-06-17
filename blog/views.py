@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, render
-from blog.models import BlogPost,Category
+from django.http import HttpResponseRedirect
+from blog.models import BlogPost,Category, Comments
 
 
 # Logic to retrieve and display posts for the given category_id
@@ -23,9 +24,22 @@ def category_posts(request, category_id):
 
 def blog_post(request, slug):
     single_blog = get_object_or_404(BlogPost, slug=slug, status='Published')
+    comments = Comments.objects.filter()
+    comments_count =comments.count()
+    if request.method =='POST':
+       comment =Comments()
+       comment.user =request.user
+       comment.blog =single_blog
+       comment.comment =request.POST['comment']
+       comment.save()
+       return HttpResponseRedirect(request.path_info)
+
 
     context = {
         'single_blog': single_blog,
+        'comments':comments,
+        'comments_count' : comments_count  ,
+
     }
     return render(request, 'blog.html', context)
 

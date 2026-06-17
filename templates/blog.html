@@ -24,8 +24,8 @@
                     <p class="fs-5 mb-4">{{ single_blog.short_description }}</p>
                     <p class="fs-5 mb-4">{{ single_blog.blog_body }}</p>
 
-                    <!-- Comments
-                    <h4>Comments ({{ comment_count }})</h4>
+                     <!-- Comments -->
+                    <h4>Comments ({{ comments_count }})</h4>
                     {% if comments %}
                         {% for comment in comments %}
                             <div class="card mt-1">
@@ -37,8 +37,8 @@
                                     </span>
                                 </div>
                             </div>
-                        {% endfor %} -->
-                    <!-- {% else %}
+                        {% endfor %} 
+                     {% else %}
                     No comments yet.
                     {% endif %}
                     <br>
@@ -55,7 +55,7 @@
                         {% else %}
                         <p>Please <span><a href="{% url 'login' %}">login</a></span> to write a comment!</p>
                         {% endif %}
-                    </div> -->
+                    </div> 
 
                 </section>
             </article>
@@ -78,7 +78,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Side widget 
+             Side widget 
             {% if social_links %}
             <div class="card mb-4 p-3">
                 <h4 class="font-italic">Follow Us</h4>
@@ -91,6 +91,6 @@
             {% endif %}
         </div>
     </div>
-</div> -->
+</div> 
 
 {% endblock %}
