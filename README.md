@@ -26,10 +26,12 @@ The project is structured around:
 - Python 3.14
 - A modern web browser
 - (Additional dependencies may be listed in requirements.txt
-
-  ## Installation & Local Setup
- Follow these steps to get the application running locally on your machine:
   
+## Installation & Local Setup
+
+Follow these steps to get the application running locally on your machine:
+
+```bash
 1. **Clone the repository and enter the project directory:**
    git clone [https://github.com/Mahesh-78-de/Blog.git](https://github.com/Mahesh-78-de/Blog.git)
    cd Blog
@@ -38,8 +40,7 @@ The project is structured around:
   # On Windows:
     python -m venv venv
     venv\Scripts\activate
-
-   # On macOS/Linux:
+  # On macOS/Linux:
      python3 -m venv venv
      source venv/bin/activate
 
@@ -57,7 +58,7 @@ The project is structured around:
 
 ## Project Structure
 
-
+```text
 Blog/
 ├── .gitignore               # Excludes environment configurations and local databases
 ├── manage.py                # Django administrative command-line utility
